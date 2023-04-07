@@ -13,8 +13,9 @@ def solution(p: float, x: np.array) -> tuple:
     alpha = 1 - p
     loc = x.mean() - 1/2
     scale = 2 / (83**2)
-    left_q = gamma.ppf(alpha/2, len(x)) / n
-    right_q = gamma.ppf(1 - alpha/2, len(x)) / n
+    n = len(x)
+    left_q = gamma.ppf(alpha/2, n) / n
+    right_q = gamma.ppf(1 - alpha/2, n) / n
     
     return scale * (loc + left_q), \
            scale * (loc + right_q)
